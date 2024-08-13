@@ -1,40 +1,40 @@
-# ResolutionNet CNN vs. SVM on MNIST
+# ResoNet: CNN vs. SVM on Multi-Resolution MNIST
 
-This project focuses on training Convolutional Neural Networks (CNN) and Support Vector Machines (SVM) on the MNIST dataset. The goal is to analyze the performance of these models on both the original and downscaled low-resolution datasets, calculating confidence intervals to assess their stability and generalization.
+This project investigates the impact of image resolution on the performance of Convolutional Neural Networks (CNN) and Support Vector Machines (SVM) using the MNIST dataset. We employ both original and downsampled low-resolution datasets to evaluate the models' accuracy, stability, and generalization by calculating and visualizing confidence intervals.
 
 ## Project Overview
 
-The MNIST dataset of numbers is widely available, as is the Fashion MNIST dataset, which contains images of clothing. For this project, we also explore the effects of downscaling the images to lower resolutions, such as 7x7 pixels, and comparing the performance of our models across different resolutions.
+The MNIST dataset, consisting of handwritten digits, is a standard benchmark in the machine learning community. We extend this dataset by exploring its downsampled versions, such as reducing the resolution from 28x28 to 7x7 pixels. The project leverages CNNs, known for their ability to capture spatial hierarchies, and SVMs, which are effective for binary and multiclass classification, to compare model robustness across varying image resolutions.
 
-### Tasks Addressed
+### Objectives
 
-1. **Training a CNN on the MNIST Dataset**:
+1. **CNN Training on MNIST**:
    - **Original Fashion MNIST (28x28 resolution)**:
-     - Code implementation for training.
-     - Explanation of the model architecture, including pooling methods and parameter selection.
-     - Graphical comparison of training and test results with computed confidence intervals.
+     - Implementation of a deep convolutional neural network (CNN).
+     - Detailed rationale for architectural choices, including convolutional layers, pooling strategies (e.g., MaxPooling), and hyperparameter selection.
+     - Visualization of training and validation accuracy, accompanied by confidence intervals.
    - **Low-Resolution MNIST (e.g., 7x7 resolution)**:
-     - Code implementation for training.
-     - Explanation of architectural modifications to handle low-resolution data.
-     - Graphical comparison of training and test results with computed confidence intervals.
-   - **Performance Analysis**:
-     - Detailed explanation of model performance, comparing the results across different resolutions and dataset types.
+     - Adaptation of the CNN architecture to handle lower-resolution inputs.
+     - Comparative analysis of the model's performance on downsampled images.
+     - Graphical representation of the training and test results with confidence intervals.
+   - **Performance Evaluation**:
+     - Comparative study of model performance across different resolutions, with a focus on overfitting, underfitting, and generalization capabilities.
 
-2. **Training an SVM on the MNIST Dataset**:
+2. **SVM Training on MNIST**:
    - **Original MNIST (28x28 resolution)**:
-     - Code implementation for training.
-     - Explanation of the SVM configuration and parameter selection.
-     - Graphical comparison of training and test results with computed confidence intervals.
+     - Implementation of a Support Vector Machine (SVM) classifier using a linear kernel.
+     - Discussion on the choice of hyperparameters such as `C` (regularization) and `gamma`.
+     - Generation of confidence intervals to evaluate the model's reliability.
    - **Low-Resolution MNIST (e.g., 7x7 resolution)**:
-     - Code implementation for training.
-     - Explanation of architectural modifications to handle low-resolution data.
-     - Graphical comparison of training and test results with computed confidence intervals.
-   - **Performance Analysis**:
-     - Detailed explanation of model performance, comparing the results across different resolutions and dataset types.
+     - Modification of the input pipeline for SVM to accommodate lower-dimensional feature vectors.
+     - Comparative analysis of classification performance on reduced-resolution data.
+     - Visualization of accuracy metrics with associated confidence intervals.
+   - **Performance Evaluation**:
+     - Comparative study of SVM performance across different resolutions, highlighting its sensitivity to input dimensionality and dataset complexity.
 
 ## Requirements
 
-To run the code in this project, ensure that you have the following dependencies installed:
+To execute the code in this project, ensure you have the following dependencies installed:
 
 - Python 3.x
 - Jupyter Notebook
@@ -44,7 +44,7 @@ To run the code in this project, ensure that you have the following dependencies
 - NumPy
 - Matplotlib
 
-You can install these packages using `pip`:
+Install these dependencies using `pip`:
 
 ```bash
 pip install jupyter tensorflow keras scikit-learn numpy matplotlib
@@ -54,18 +54,18 @@ pip install jupyter tensorflow keras scikit-learn numpy matplotlib
 
 ### Running the Classifiers
 
-All the code for training the CNN and SVM models, as well as plotting the results, is contained in a Jupyter Notebook. Follow the steps below to run the notebook:
+All the code for training the CNN and SVM models, as well as visualizing the results, is encapsulated in a Jupyter Notebook. Follow the instructions below to run the notebook:
 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/Maheer1207/ResolutionNet-CNN-vs.-SVM-on-MNIST.git
+git clone https://github.com/Maheer1207/Resonet.git
 ```
 
 2. Navigate to the project directory:
 
 ```bash
-cd ResolutionNet-CNN-vs.-SVM-on-MNIST
+cd Resonet
 ```
 
 3. Launch Jupyter Notebook:
@@ -76,37 +76,35 @@ jupyter notebook
 
 4. Open the notebook named `classifiers.ipynb`:
 
-   This notebook contains all the necessary code to:
-   - Train the CNN on both the original and low-resolution MNIST datasets.
-   - Train the SVM on both the original and low-resolution MNIST datasets.
-   - Plot the training and testing accuracy along with confidence intervals for comparison.
+   This notebook contains:
+   - End-to-end implementation for training CNNs on both the original and downsampled MNIST datasets.
+   - End-to-end implementation for training SVMs on both the original and downsampled MNIST datasets.
+   - Generation of plots for training and validation accuracy, along with confidence intervals to assess model reliability.
 
-5. Execute the cells in the notebook to run the models and generate the plots.
+5. Execute the cells in the notebook sequentially to train the models and generate the visualizations.
 
 ### Viewing the Results
 
-Once you've run the notebook, the results, including accuracy plots and confidence intervals, will be displayed inline within the notebook. You can also save these plots from the notebook interface for further analysis.
+The notebook will display the results, including accuracy plots and confidence intervals, inline. You can save the generated plots directly from the notebook for further analysis or reporting purposes.
 
 ## Results
 
-The results of the training processes, including the accuracy and confidence intervals for both CNN and SVM models, are documented within the Jupyter Notebook. Graphs are provided to visualize the performance differences between the original and low-resolution datasets.
+The training processes yield insights into the accuracy and stability of CNN and SVM models across different resolutions. The key performance indicators (KPIs) such as accuracy, confidence intervals, and loss curves are visualized within the Jupyter Notebook.
 
 ### Key Observations
 
 - **CNN Performance**:
-  - The CNN model performed better on the original 28x28 dataset compared to the low-resolution 7x7 dataset.
-  - As the resolution decreases, the test accuracy drops, indicating the importance of image detail for CNNs.
+  - The CNN exhibits superior performance on the original 28x28 dataset, leveraging the spatial hierarchies inherent in the image data.
+  - A significant drop in test accuracy is observed as the resolution decreases, indicating that CNNs are highly sensitive to the level of detail in input images.
 
 - **SVM Performance**:
-  - The SVM model showed consistent performance across different resolutions, though it required more time to train and validate.
-  - Interestingly, the SVM performed relatively better on the low-resolution dataset compared to CNN, though overall performance was still better on the original resolution.
+  - The SVM demonstrates relatively consistent performance across different resolutions, though it is computationally intensive, especially when handling higher-dimensional data.
+  - On low-resolution datasets, the SVM's performance is more resilient compared to CNNs, though the overall accuracy remains higher for the original dataset.
 
 ## Conclusion
 
-This project highlights the impact of image resolution on model performance. CNNs, which are inherently designed to capture spatial hierarchies in images, perform better with higher-resolution inputs, whereas SVMs, while more resilient to resolution changes, require significant computational resources.
-
-The comparison underscores the need to choose the right model based on the specific use case, data characteristics, and computational constraints.
+This project underscores the importance of image resolution in machine learning model performance. CNNs, with their ability to exploit spatial structures, are more affected by reduced resolution, while SVMs, though less sensitive, require careful hyperparameter tuning to handle varying input dimensions. The results highlight the trade-offs between model complexity, input resolution, and computational resources.
 
 ## Contributing
 
-If you'd like to contribute to this project, please fork the repository and submit a pull request. For major changes, please open an issue first to discuss what you would like to change.
+We welcome contributions to this project. If you have suggestions or improvements, please fork the repository and submit a pull request. For significant changes, open an issue to discuss the proposed modifications.
